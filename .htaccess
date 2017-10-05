@@ -1,0 +1,10 @@
+RewriteEngine On
+RewriteCond %{REQUEST_URI} ^/mosaico/upload/ 
+RewriteCond %{REQUEST_URI} !^/mosaico/upload/thumbnail
+RewriteRule ^(.*)$ /mosaico/backend-php/index.php [QSA,L]
+
+RewriteCond %{REQUEST_URI} ^/mosaico/dl
+RewriteRule ^(.*)$ /mosaico/backend-php/index.php [QSA,L]
+
+RewriteCond %{REQUEST_URI} ^/mosaico/img
+RewriteRule ^(.*)$ /mosaico/backend-php/index.php [QSA,L]
