@@ -138,7 +138,7 @@ function initializeEditor(content, blockDefs, thumbPathConverter, galleryUrl) {
     debug: ko.observable(false),
     contentListeners: ko.observable(0),
     
-    logoPath: 'dist/img/mosaico32.png',
+    logoPath: 'dist/img/mc-email-logo.png',
     logoUrl: '.',
     logoAlt: 'mosaico'
   };
