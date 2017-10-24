@@ -37,11 +37,9 @@
         showSaved: ko.observable(false),
         edits: ko.observableArray(initialEdits),
         templates: [{
-          name: 'versafix-1', desc: 'The versatile template'
+          name: 'mc-advanced', desc: 'Create advanced "drag-n-drop" emails'
         },{
-          name: 'tedc15', desc: 'The TEDC15 template'
-        },{
-          name: 'tutorial', desc: 'The Tutorial'
+          name: 'versafix-1', desc: 'Original template'
         }]
       };
 
@@ -70,7 +68,7 @@
         var rnd = Math.random().toString(36).substr(2, 7);
         var template = 'templates/'+shorttmplname+'/template-'+shorttmplname+'.html';
         viewModel.edits.unshift({ created: Date.now(), key: rnd, name: shorttmplname, template: template });
-        document.location = 'editor.html#'+rnd;
+        document.location = 'editor.php#'+rnd;
         // { data: 'AAAA-MM-GG', key: 'ABCDE' }
         // viewModel.edits.push(template);
       };
@@ -132,7 +130,7 @@ a, a:link, a:visited {
   overflow-y: auto;
 }
 .template a:hover {
-  outline: 5px solid #900000;
+  outline: 5px solid #273d5e;
   transition: outline .2s;
 }
 #savedTable tbody tr:nth-child(odd) td {
@@ -142,7 +140,7 @@ a, a:link, a:visited {
   padding: 2px 5px ;
 }
 .operationButton, .resumeButton {
-  background-color: #333332;
+  background-color: #273D5E;
   color: white !important;
   padding: 5px 8px;
   border-radius: 5px;
@@ -151,15 +149,27 @@ a, a:link, a:visited {
 .operationButton i {
   color: white;
 }
+.logoWrapper {
+  color: #ffffff;
+  font-size: 24px;
+}
 </style>
 
   </head>
   <body style="overflow: auto; text-align: center; background-color: #3f3d33; padding: 0; margin: 0; display: none;" data-bind="visible: true">
-  <div style="background-color: #d2cbb1; padding: 10px;">
-    <table class="logoWrapper" valign="bottom" align="center"><tr><td valign="bottom"><img class="logoImage" alt="Mosaico" style="display: block;" src="dist/img/mosaicologo.png" /><div class="logoContainer"></div></td></tr></table>
+  <div style="background-color: #273d5e; padding: 10px;">
+    <table class="logoWrapper" valign="bottom" align="center">
+      <tr>
+        <td valign="bottom"><img class="logoImage" alt="Mosaico" style="display: block; height: 50px; margin: 0 10px;" src="http://www.messiah.edu/site/images/logo-footer.png" /><div class="logoContainer"></div>
+        </td>
+        <td>
+          Mass Email Composition Page
+        </td>
+      </tr>
+    </table>
   </div>
     <!-- ko if: edits().length -->
-    <div style="overflow-y: auto; max-height: 200px; z-index: 10; position: relative; padding: 1em; background-color: #f1eee6;">
+    <div style="overflow-y: auto; max-height: 200px; z-index: 10; position: relative; padding: 1em; background-color: #6697b8;">
     <!-- ko ifnot: $root.showSaved --><span>You have saved contents in this browser! <a class="resumeButton" href="#" data-bind="click: $root.showSaved.bind(undefined, true);"><i class="fa fa-plus-square"></i> Show</a></span><!-- /ko -->
     <!-- ko if: $root.showSaved -->
     <table id="savedTable" align="center" cellspacing="0" cellpadding="8" style="padding: 5px; ">
@@ -169,12 +179,12 @@ a, a:link, a:visited {
       </tr></thead>
     <tbody data-bind="foreach: edits">
       <tr>
-        <td align="left"><a href="#" data-bind="attr: { href: 'editor.html#'+key }"><code>#<span data-bind="text: key">key</span></code></a></td>
-        <td style="font-weight: bold" align="left"><a href="#" data-bind="attr: { href: 'editor.html#'+key }"><span data-bind="text: name">versamix</span></a></td>
+        <td align="left"><a href="#" data-bind="attr: { href: 'editor.php#'+key }"><code>#<span data-bind="text: key">key</span></code></a></td>
+        <td style="font-weight: bold" align="left"><a href="#" data-bind="attr: { href: 'editor.php#'+key }"><span data-bind="text: name">versamix</span></a></td>
         <td><span data-bind="text: typeof created !== 'undefined' ? $root.dateFormat(created) : '-'">YYYY-MM-DD</span></td>
         <td><span style="font-weight: bold" data-bind="text: typeof changed !== 'undefined' ? $root.dateFormat(changed) : '-'">YYYY-MM-DD</span></td>
         <td>
-        <a class="operationButton" href="#" data-bind="attr: { href: 'editor.html#'+key }" title="edit"><i class="fa fa-pencil"></i></a>
+        <a class="operationButton" href="#" data-bind="attr: { href: 'editor.php#'+key }" title="edit"><i class="fa fa-pencil"></i></a>
         <!--(<a href="#" data-bind="click: $root.renameEdit.bind(undefined, $index())" title="rinomina"><i class="fa fa-trash-o"></i></a>)-->
         <a class="operationButton" href="#" data-bind="click: $root.deleteEdit.bind(undefined, $index())" title="delete"><i class="fa fa-trash-o"></i></a>
         </td>
@@ -189,7 +199,7 @@ a, a:link, a:visited {
     <div data-bind="foreach: templates">
       <div class="template template-xx" style="" data-bind="attr: { class: 'template template-'+name }">
         <div class="description" style="padding-bottom:5px"><b data-bind="text: name">xx</b>: <span data-bind="text: desc">xx</span></div>
-        <a href="#" data-bind="click: $root.newEdit.bind(undefined, name), attr: { href: 'editor.html#templates/'+name+'/template-'+name+'.html' }">
+        <a href="#" data-bind="click: $root.newEdit.bind(undefined, name), attr: { href: 'editor.php#templates/'+name+'/template-'+name+'.html' }">
           <img src width="100%" alt="xx" data-bind="attr: { src: 'templates/'+name+'/edres/_full.png' }">
         </a>
       </div>
