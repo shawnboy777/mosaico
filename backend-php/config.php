@@ -1,6 +1,6 @@
 <?php
-  $webDoamin = "";
-  $serverDir = "";
+  $webDoamin = "http://".$_SERVER['SERVER_NAME'];
+  $serverDir = $_SERVER['DOCUMENT_ROOT'];
 
   /* note that all _URL and _DIR configurations below must end with a forward slash (/) */
 
