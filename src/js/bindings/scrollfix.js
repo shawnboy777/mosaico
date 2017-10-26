@@ -25,7 +25,8 @@ var render = function() {
     }
 
     tinymce.activeEditor.nodeChanged();
-    tinymce.activeEditor.theme.panel.visible(true);
+    /* removed this because when scrolled, the editor would reappear */
+    //tinymce.activeEditor.theme.panel.visible(true);
     if (tinymce.activeEditor.theme.panel.layoutRect().y <= 40)
       tinymce.activeEditor.theme.panel.moveBy(0, 40 - tinymce.activeEditor.theme.panel.layoutRect().y);
 
