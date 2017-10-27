@@ -462,6 +462,13 @@
 			blockDescription: This section is for basic text. Click inside the text area to begin editing in place.;
 			theme: contentTheme
 		}
+		
+		bgImageBlock {
+			label: Text on Image Block;
+			properties: longTextStyle image longText;
+			blockDescription: Place an image that will fully stretch within the margins of the email.  The image aspect ratio is maintained, based on the width. The text will also be the full width of the email (less the margins).;
+			theme: contentTheme
+		}
 
 		singleArticleBlock {
 			label: Image/Text Block;
@@ -469,7 +476,7 @@
 			blockDescription: Place an image that will fully stretch within the margins of the email.  The image aspect ratio is maintained, based on the width. The text will also be the full width of the email (less the margins).;
 			theme: contentTheme
 		}
-
+		
 		doubleArticleBlock {
 			label: 2 Columns Block;
 			properties: backgroundColor titleVisible=true buttonVisible=true imageVisible=true titleTextStyle longTextStyle buttonStyle leftImage leftLongText leftButtonLink rightImage rightLongText rightButtonLink;
@@ -915,6 +922,7 @@
 						{% if phone != '' %}
 						 {{ phone }} or 
 						{% endif %} <a style="color: #aaf;" href="mailto:{{ email }}">{{ email }}</a>.
+						<span id="jqTest">Other test</span>
 					</td>
 				</tr>
 			</table>
@@ -933,7 +941,7 @@
 														<img src="http://www.messiah.edu/site/images/logo-footer.png" alt="Messiah Logo" style="display: block;" width="150" />
 													</div>
 												</td>
-												<td class="center" style="font-size: 15px; color: #ffffff; text-align: center; font-family: Arial, sans-serif; line-height: 16px; vertical-align: middle; padding:10px 20px;min-width:200px;">
+												<td valign="middle" class="center" style="font-size: 15px; color: #ffffff; text-align: center; font-family: Arial, sans-serif; line-height: 16px; vertical-align: middle; padding:10px 20px;min-width:200px;">
 													{% for groupName in groups %}{{ groupName }}{% if not loop.last %}, {% endif %}{% endfor %}
 												</td>
 											</tr>
@@ -950,6 +958,37 @@
 	  <!-- /preheaderBlock -->
 
 		<div data-ko-container="main" data-ko-wrap="false">
+
+		  <!-- test bgimage block --><div style="display:none;">
+			<table class="vb-outer" width="100%" cellpadding="0" border="0" cellspacing="0" bgcolor="#f2f2f2" style="background-color: #f2f2f2; -ko-background-color: @externalBackgroundColor; -ko-attr-bgcolor: @externalBackgroundColor" data-ko-block="bgImageBlock">
+				<tr>
+					<td class="vb-outer" valign="top" align="center">
+						<!--[if (gte mso 9)|(lte ie 8)]><table align="center" border="0" cellspacing="0" cellpadding="0" width="620"><tr><td align="center" valign="top"><![endif]-->
+						<div class="oldwebkit">
+							<table width="620" height="200" class="vb-container fullwidth" cellpadding="0" border="0" align="center" cellspacing="0" style="width: 100%; max-width: 620px; height: 200px; margin: 0; padding: 0;">
+								<tr>
+									<td data-ko-editable="image.src" data-ko-placeholder-height="200" background="http://mosaico.io/srv/f-default/img?method=placeholder&amp;params=620%2C200" bgcolor="#7D8B8C">
+										<!--[if gte mso 9]> <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:620px; height:200px;"> <v:fill type="tile" src="http://mosaico.io/srv/f-default/img?method=placeholder&amp;params=620%2C200" color="#afcef2" /> <v:textbox inset="0,0,0,0"> <![endif]-->
+										<table cellpadding="0" cellspacing="0" width="100%">
+											<tbody>
+												<tr>
+													<td style="font-size: 19px; color: #ffffff; text-align: center; font-family: Arial, sans-serif; background-size:cover; padding: 18px 0;">
+														This is a bunch of text that would be seen in the middle of the image. Let's see what happens when I add a hyperlink: <a href="https://www.messiah.edu">Messiah's website</a> is the one I chose.
+													</td>
+												</tr>
+											</tbody>
+										</table>
+										<!--[if gte mso 9]> </v:textbox> </v:rect> <![endif]-->
+									</td>
+								</tr>
+							</table>
+						</div>
+						<!--[if (gte mso 9)|(lte ie 8)]></td></tr></table><![endif]-->
+					</td>
+				</tr>
+			</table>
+		  <!-- /test bgimage block --></div>
+		  
 		  <!-- logoBlock -->
 			<table class="vb-outer" width="100%" cellpadding="0" border="0" cellspacing="0" bgcolor="#f2f2f2" style="background-color: #f2f2f2; -ko-background-color: @externalBackgroundColor; -ko-attr-bgcolor: @externalBackgroundColor" data-ko-block="logoBlock">
 				<tr>
